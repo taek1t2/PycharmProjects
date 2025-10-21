@@ -1,0 +1,36 @@
+# Python (recursive)
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/*.egg-info/
+
+# Virtual envs (many copies across subfolders)
+**/.venv/
+**/venv/
+
+# IDE / project files
+**/.idea/
+**/*.iml
+.vscode/
+**/.vscode/
+
+# Databases & notebooks
+**/*.db
+**/*.db-shm
+**/*.db-wal
+**/.ipynb_checkpoints/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Course assets (ignore if you don't need them)
+**/images/
+**/assets/
+**/data/
+**/datasets/
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.svg
