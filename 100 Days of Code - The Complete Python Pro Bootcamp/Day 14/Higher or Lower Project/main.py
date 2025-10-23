@@ -35,7 +35,6 @@ def compare_counts(user_guess, a_followers, b_followers):
 
 a_followers_count = account_a[1]
 b_followers_count = account_b[1]
-print(a_followers_count)
 
 is_correct = compare_counts(pick_one, a_followers_count, b_followers_count)
 
