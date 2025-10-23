@@ -1,29 +1,20 @@
 
 from random import choice
 from game_data import data
-
 from art import logo, vs
-print(logo)
 
-def pick_a():
-    compare_a = choice(data)
-    return f"Compare A: {compare_a['name']}, {compare_a['description']}, {compare_a['country']}."
-account_a = pick_a()
-print(account_a)
 
-print(vs)
+def pick_account():
+    return choice(data)
 
-def pick_b():
-    compare_b = choice(data)
-    return f"Against B: {compare_b['name']}, {compare_b['description']}, {compare_b['country']}."
-account_b = pick_b()
-print(account_b)
+account_a = pick_account()
+account_b = pick_account()
 
-if account_a == account_b:
+if not account_a != account_b:
     account_b = choice(data)
 
-pick_one = input("Who has more followers? Type 'a' or 'b': ").lower()
-score = 0
+def format_data(label, record):
+    return f"{label}, {record['name']}, {record['description']} from {record['country']}"
 
 def compare_counts(user_guess, a_followers, b_followers):
     if a_followers > b_followers:
@@ -33,13 +24,31 @@ def compare_counts(user_guess, a_followers, b_followers):
     else:
         return "Incorrect, please input either 'a' or 'b'."
 
-a_followers_count = account_a[1]
-b_followers_count = account_b[1]
+print(logo)
+continue_if_right = True
+score = 0
+account_a = choice(data)
+while continue_if_right:
 
-is_correct = compare_counts(pick_one, a_followers_count, b_followers_count)
+    account_b = choice(data)
+    while account_a == account_b:
+        account_b = choice(data)
 
-if is_correct:
-    score +=1
-    print(f"You're correct. Score: {score}")
-else:
-    print(f"Wrong, try again! Final Score: {score}")
+    print(format_data("Compare A: ", account_a))
+    print(vs)
+    print(format_data("Against B: ", account_b))
+
+    pick_one = input("Who has more followers? Type 'a' or 'b': ").lower()
+    print("\n" * 30)
+
+    a_followers_count = account_a['follower_count']
+    b_followers_count = account_b['follower_count']
+
+    is_correct = compare_counts(pick_one, a_followers_count, b_followers_count)
+
+    if is_correct:
+        score +=1
+        print(f"You're correct. Score: {score}")
+    else:
+        print(f"Wrong, try again! Final Score: {score}")
+        continue_if_right = False
