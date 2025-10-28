@@ -30,15 +30,33 @@ resources = {
     "coffee beans": 100,
 }
 
-beverage_options = input("What would you like? [Espresso / Latte / Cappuccino]: ")
-def format_data(resources):
-    resource_one = resources["water"]
-    resource_two = resources["milk"]
-    resource_three = resources["coffee beans"]
+profit = 0
+
+def is_resources_sufficient(ingredients):
+    """Returns True if order can made, false if ingredients are insufficient"""
+    for item in ingredients:
+        if ingredients[item] > resources[item]:
+            print(f"Sorry, there aren't enough {item}.")
+            return False
+        return True
+
+def process_coins():
+    """To insert coins and add the total after inserting"""
+    print("Please insert coins.")
+    total = float(input("Quarters: ")) * 0.25
+    total += float(input("Dimes: ")) * 0.1
+    total += float(input("Nickels: ")) * 0.05
+    total += float(input("Pennies: ")) * 0.01
+
+process_coins()
+
+while True:
+    beverage_options = input("What would you like? [Espresso / Latte / Cappuccino]: ")
     if beverage_options == "report":
-        print(f"Water: {resource_one}ml \nMilk: {resource_two}ml \nCoffee Beans:{resource_three}g")
-
-format_data(resources)
-
-turn_coffee_off = input("Done ordering? Type ['off']: \n").lower()
-
+        print(f"Water: {resources['water']}ml")
+        print(f"Milk: {resources['milk']}ml")
+        print(f"Coffee Bean: {resources["coffee beans"]}g")
+        print(f"Water: ${profit}")
+    elif beverage_options == "off":
+        print("Order is finished, good-bye")
+    break
