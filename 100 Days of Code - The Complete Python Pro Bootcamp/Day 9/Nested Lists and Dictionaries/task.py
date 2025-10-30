@@ -9,7 +9,7 @@ nested_list = ["1", "2", "3", ["A", "B", "C"]]
 
 print(nested_list[3][1])
 print(nested_list[3].index("B"))
-print(nested_list[3].items(1))
+# print(nested_list[3].items(1))
 
 
 travel_log = {
