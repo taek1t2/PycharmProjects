@@ -36,7 +36,7 @@ def draw_row(num_dots):
 def another_row(num_cols):
     tae.setheading(90)
     tae.forward(gap)
-    tae.setheading(-180)
+    tae.setheading(180)
     tae.forward(gap * num_cols)
     tae.setheading(0)
 
