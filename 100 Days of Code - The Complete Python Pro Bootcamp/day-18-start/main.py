@@ -49,7 +49,7 @@ shape_data = {
     "decagon": {"sides": 10, "colors": "turquoise4"}
 }
 
-def draw_shapes(sides, colors):
+def draw_shapes(sides):
     side_length = 100
     angle = 360 / sides
     for to_move in range(sides):
