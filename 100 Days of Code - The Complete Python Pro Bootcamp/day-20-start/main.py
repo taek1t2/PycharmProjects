@@ -38,26 +38,19 @@ while game_on:
         game_on = False
         score.game_over()
 
+    for segment in nagini.segments:
+        if segment == nagini.segments:
+            pass
+        elif nagini.head.distance(segment) < 10:
+            game_on = False
+            score.game_over()
+
+# OR
+
     for segment in nagini.segments[1:]:
         if nagini.head.distance(segment) < 10:
             game_on = False
             score.game_over()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
