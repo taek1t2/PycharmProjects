@@ -13,6 +13,11 @@ class Scoreboard(Turtle):
         self.ht()
         self.update_scoreboard()
 
+    def game_over(self):
+        self.goto(0,0)
+        self.color("white")
+        self.write("GAME OVER", align=ALIGNMENT, font=FONT)
+
     def track_score_after_nom(self):
         self.score += 1
         self.update_scoreboard()

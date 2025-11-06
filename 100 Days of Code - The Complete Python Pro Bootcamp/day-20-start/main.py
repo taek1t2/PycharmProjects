@@ -31,7 +31,17 @@ while game_on:
     # Detect a collision with food
     if nagini.head.distance(food) < 15:
         food.refresh()
+        nagini.extend()
         score.track_score_after_nom()
+
+    if nagini.head.xcor() > 280 or nagini.head.xcor() < -280 or nagini.head.ycor() > 280 or nagini.head.ycor() < -280:
+        game_on = False
+        score.game_over()
+
+    for segment in nagini.segments[1:]:
+        if nagini.head.distance(segment) < 10:
+            game_on = False
+            score.game_over()
 
 
 
