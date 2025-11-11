@@ -14,6 +14,7 @@ r_paddle = Paddle((350, 0))
 l_paddle = Paddle((-350, 0))
 
 ball = Ball()
+score = Scoreboard()
 
 screen.listen()
 screen.onkey(r_paddle.go_up, 'Up')
@@ -23,7 +24,6 @@ screen.onkey(l_paddle.go_down, "s")
 
 game_is_on = True
 while game_is_on:
-    time.sleep(.09)
     screen.update()
     ball.move()
     ball.bounce_y()
@@ -33,16 +33,12 @@ while game_is_on:
 
     if ball.xcor() > 380:
         ball.reset_position()
+        score.l_point()
 
     if ball.xcor() > -380:
         ball.reset_position()
+        score.r_point()
 
 
 
 screen.exitonclick()
-
-
-# piano_keys = ["a", "b", "c", "d", "e", "f", "g"]
-# piano_tuple = ("do", "re", "mi", "fa", "so", "la", "ti")
-#
-# print(piano_tuple[1:])
