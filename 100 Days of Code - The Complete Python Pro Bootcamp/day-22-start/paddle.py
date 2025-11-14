@@ -1,4 +1,4 @@
-from encodings.punycode import selective_find
+# from encodings.punycode import selective_find
 from turtle import Turtle
 
 class Paddle(Turtle):
