@@ -14,10 +14,10 @@ class CarManager:
         random_cars_coming = random.randint(1, 6)
         if random_cars_coming == 1:
             each_car = Turtle(shape="square")
-            each_car.shapesize(stretch_wid=1, stretch_len=3)
+            each_car.shapesize(stretch_wid=2, stretch_len=4)
             each_car.penup()
             each_car.color(random.choice(COLORS))
-            random_y = random.randint(-260, 260)
+            random_y = random.randint(-250, 250)
             each_car.goto(290, random_y)
             self.all_cars.append(each_car)
 

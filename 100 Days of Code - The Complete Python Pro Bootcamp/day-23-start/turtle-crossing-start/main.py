@@ -1,4 +1,5 @@
 import time
+import random
 from turtle import Screen
 from player import Player
 from car_manager import CarManager
@@ -15,9 +16,15 @@ screen.listen()
 screen.onkey(player.go_up, "Up")
 
 
+collision_distance = 20
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
     car.create_car()
     car.moving_cars()
+
+    # for every_car in car:
+    #     if player.distance(every_car) < collision_distance:
+
+
