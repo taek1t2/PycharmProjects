@@ -35,3 +35,4 @@ while game_is_on:
         score.level_up()
 
     screen.update()
+screen.exitonclick()
