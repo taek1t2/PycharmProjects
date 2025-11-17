@@ -10,6 +10,7 @@ screen.tracer(0)
 
 player = Player()
 car = CarManager()
+score = Scoreboard()
 
 screen.listen()
 screen.onkey(player.go_up, "Up")
@@ -26,8 +27,11 @@ while game_is_on:
     for every_car in car.all_cars:
         if player.distance(every_car) < collision_distance:
             game_is_on = False
+            score.game_over()
 
     if player.at_finish_line():
         player.start_over()
         car.level_up()
+        score.level_up()
 
+    screen.update()
