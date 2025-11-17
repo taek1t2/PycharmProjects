@@ -16,7 +16,7 @@ screen.listen()
 screen.onkey(player.go_up, "Up")
 
 
-collision_distance = 20
+collision_distance = 25
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
@@ -24,7 +24,7 @@ while game_is_on:
     car.create_car()
     car.moving_cars()
 
-    # for every_car in car:
-    #     if player.distance(every_car) < collision_distance:
-
+    for every_car in car.all_cars:
+        if player.distance(every_car) < collision_distance:
+            print("game over")
 
