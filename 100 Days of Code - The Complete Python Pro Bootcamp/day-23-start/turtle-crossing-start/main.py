@@ -26,8 +26,8 @@ while game_is_on:
 
     for every_car in car.all_cars:
         if player.distance(every_car) < collision_distance:
-            game_is_on = False
             score.game_over()
+            game_is_on = False
 
     if player.at_finish_line():
         player.start_over()
