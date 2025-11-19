@@ -35,24 +35,14 @@ while game_on:
         score.track_score_after_nom()
 
     if nagini.head.xcor() > 280 or nagini.head.xcor() < -280 or nagini.head.ycor() > 280 or nagini.head.ycor() < -280:
-        game_on = False
-        score.game_over()
+        score.reset()
 
     for segment in nagini.segments:
         if segment == nagini.segments:
             pass
         elif nagini.head.distance(segment) < 10:
-            game_on = False
-            score.game_over()
-
-# OR
-
-    for segment in nagini.segments[1:]:
-        if nagini.head.distance(segment) < 10:
-            game_on = False
-            score.game_over()
-
-
+            score.reset()
+            nagini.reset()
 
 
 screen.exitonclick()
