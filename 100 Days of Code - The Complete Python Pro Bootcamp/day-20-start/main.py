@@ -36,11 +36,10 @@ while game_on:
 
     if nagini.head.xcor() > 280 or nagini.head.xcor() < -280 or nagini.head.ycor() > 280 or nagini.head.ycor() < -280:
         score.reset()
+        nagini.reset()
 
-    for segment in nagini.segments:
-        if segment == nagini.segments:
-            pass
-        elif nagini.head.distance(segment) < 10:
+    for segment in nagini.segments[1:]:
+        if nagini.head.distance(segment) < 10:
             score.reset()
             nagini.reset()
 
