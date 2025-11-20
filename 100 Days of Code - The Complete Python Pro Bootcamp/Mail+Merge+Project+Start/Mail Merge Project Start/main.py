@@ -1,7 +1,8 @@
 #TODO: Create a letter using starting_letter.txt
 PLACEHOLDER = "[name]"
 
-to_letter = open("Input/Letters/starting_letter.txt", "r")
+with open("Input/Letters/starting_letter.txt", "r") as letter:
+    letter_contents = letter.read()
 
 friend_invite = []
 with open("Input/Names/invited_names.txt", "r") as friends_name:
