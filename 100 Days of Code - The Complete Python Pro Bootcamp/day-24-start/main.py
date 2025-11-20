@@ -3,6 +3,6 @@ with open("../../Desktop/my_file.txt") as f:
     print(content)
     # file.close()
 
-# with open("/../../Desktop/my_file.txt", mode="w") as f:
-#     content = f.write("\nI love a challenge\n I love my free time")
+# with open("my_file.txt", mode="w") as f:
+#     content = f.write("\nI love colors")
 #     print(content)
