@@ -1,13 +1,17 @@
 #TODO: Create a letter using starting_letter.txt
+PLACEHOLDER = "[name]"
 
 to_letter = open("Input/Letters/starting_letter.txt", "r")
 
 friend_invite = []
-invited = open("Input/Names/invited_names.txt", "r")
+with open("Input/Names/invited_names.txt", "r") as friends_name:
+    names = friends_name.readlines()
+    print(names)
 
 #for each name in invited_names.txt
-for name in invited:
-    friends = friend_invite.append(name)
+for name in names:
+    friend_invite.append(name)
+
 
 #Replace the [name] placeholder with the actual name.
 
