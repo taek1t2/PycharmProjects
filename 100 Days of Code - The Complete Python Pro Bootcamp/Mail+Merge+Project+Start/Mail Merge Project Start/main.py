@@ -7,7 +7,7 @@ invited = open("Input/Names/invited_names.txt", "r")
 
 #for each name in invited_names.txt
 for name in invited:
-    friend_invite.append(name)
+    friends = friend_invite.append(name)
 
 #Replace the [name] placeholder with the actual name.
 
