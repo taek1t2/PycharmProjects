@@ -10,7 +10,8 @@ with open("Input/Letters/starting_letter.txt", "r") as letter:
     for name in names:
         stripped_name = name.strip()
         new_letter_for_each = letter_contents.replace(PLACEHOLDER, stripped_name)
-        print(new_letter_for_each)
+        with open(f"./Output/ReadyToSend/letter_for_{stripped_name}.docx", mode="w") as complete_letter:
+            complete_letter.write(new_letter_for_each)
 
 
 
