@@ -1,7 +1,7 @@
-# with open("weather_data.csv") as weather_deets:
-#     for each_day in weather_deets:
-#         weekly_weather = weather_deets.readlines()
-#         print(weekly_weather)
+with open("weather_data.csv") as weather_deets:
+    for each_day in weather_deets:
+        weekly_weather = weather_deets.readlines()
+        print(weekly_weather)
 
 import csv
 
@@ -12,9 +12,48 @@ with open("weather_data.csv", "r", newline='') as data_file:
         if row[1] != "temp":
             temperatures.append(int(row[1]))
 
-    print(temperatures)
 
 
+import pandas
 
+data = pandas.read_csv("weather_data.csv")
+temp_list = data["temp"].to_list()
+print(data["temp"].mean())
+print(data["temp"].max())
 
+#get Data in Columns
+print(data['condition'])
+print(data.condition)
+
+#get data in Row
+print(data[data.day == "Monday"])
+print(data[data.temp == data.temp.max()])
+
+monday = data[data.day == "Monday"]
+print(monday.temp)
+
+monday_farh = monday.temp[0]
+monday_temp_f = monday_farh * 9/5 + 32
+
+print(monday_temp_f)
+
+#Create a dataframe from scratch
+data_dict = {
+    "students": ['bob', 'tae', 'jacquelyn'],
+    "scores": [88, 91, 75]
+}
+
+data_score = pandas.DataFrame(data_dict)
+data.to_csv("Student_Scores.csv")
+
+average = sum(temp_list) / len(temp_list)
+
+print(data)
+print(data["temp"])
+print(type(data))
+print(type(data["temp"]))
+
+dict_weather = data.to_dict()
+temp_dict = data["temp"].to_dict()
+print(dict_weather)
 
