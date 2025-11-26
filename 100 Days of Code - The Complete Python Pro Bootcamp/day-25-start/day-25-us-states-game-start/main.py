@@ -6,21 +6,26 @@ screen.title("U.S States Game")
 image = "blank_states_img.gif"
 screen.addshape(image)
 turtle.shape(image)
+guessed_states = []
+
+while len(guessed_states) < 50:
+
+    state_answer = screen.textinput(title= f"{len(guessed_states)}/50 States Correct",
+                                    prompt="What's another state's name?").title()
+
+    map_data = pandas.read_csv("50_states.csv")
+    all_states = map_data.state.to_list()
 
 
-state_answer = screen.textinput(title= "Guess the State",
-                                prompt="What's another state's name?".title())
-
-map_data = pandas.read_csv("50_states.csv")
-all_states = map_data.state.to_list()
-
-t = turtle.Turtle()
-t.hideturtle()
-t.penup()
-data = map_data[map_data.state == state_answer]
-t.goto(data.x.item(), data.y.item())
-t.write(state_answer)
+    if state_answer in all_states:
+        guessed_states.append(state_answer)
+        t = turtle.Turtle()
+        t.hideturtle()
+        t.penup()
+        data = map_data[map_data.state == state_answer]
+        t.goto(data.x.item(), data.y.item())
+        t.write(state_answer)
 
 
-turtle.mainloop()
+screen.exitonclick()
 
