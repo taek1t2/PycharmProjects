@@ -16,7 +16,8 @@ while len(guessed_states) < 50:
     map_data = pandas.read_csv("50_states.csv")
     all_states = map_data.state.to_list()
 
-
+    if state_answer == "Exit":
+        break
     if state_answer in all_states:
         guessed_states.append(state_answer)
         t = turtle.Turtle()
