@@ -26,3 +26,16 @@ print(shorter_name)
 
 all_caps_name = [name.upper() for name in names if len(name) > 4]
 print(all_caps_name)
+
+#dictionary comprehension: variable = {new_key:new_value for (new_key, new_value) in dict.items()}
+weather_c = {"Monday": 12, "Tuesday": 14, "Wednesday": 15, "Thursday": 14, "Friday": 21, "Saturday": 22, "Sunday": 24}
+weather_f = {day:(temp_c * 9/5) + 32 for (day, temp_c) in weather_c.items()}
+
+print(weather_f)
+
+
+sentence = "What is the Airspeed Velocity of an Unladen Swallow?"
+word_as_items = sentence.split()
+
+result = {word:len(word) for word in word_as_items}
+print(result)
