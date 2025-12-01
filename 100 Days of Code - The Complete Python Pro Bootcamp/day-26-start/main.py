@@ -39,3 +39,10 @@ word_as_items = sentence.split()
 
 result = {word:len(word) for word in word_as_items}
 print(result)
+
+#panda columns, rows and charts for loops
+import pandas
+student_dict = {}
+students_data_frame = pandas.DataFrame(student_dict)
+for (index, row) in students_data_frame.iterrows():
+    print(index)
