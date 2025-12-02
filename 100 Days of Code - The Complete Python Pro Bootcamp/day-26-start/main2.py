@@ -12,3 +12,7 @@ print(nato_dict)
 
 #TODO Create a list of the phonetic code words from a word that the user inputs.
 #enter a word: "Tae", ["Thomas", "Alpha", "Echo"]
+word_enter = input("Enter a word: ").lower()
+the_word = [nato_dict[each_letter.upper()] for each_letter in word_enter]
+print(the_word)
+
