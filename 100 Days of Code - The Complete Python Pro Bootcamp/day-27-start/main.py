@@ -26,6 +26,19 @@ input = Entry(width=20)
 input.pack()
 input.get()
 
+#Text
+
+#Spinbox
+
+#Scale
+
+#Checkbutton
+
+#Radiobutton
+
+#Listbox
+
+
 
 
 
