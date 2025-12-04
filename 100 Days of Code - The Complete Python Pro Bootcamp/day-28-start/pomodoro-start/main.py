@@ -18,7 +18,12 @@ timer = None
 
 # ---------------------------- TIMER RESET ------------------------------- # 
 def timer_reset():
-    pass
+    window.after_cancel(timer)
+    canvas.itemconfig(timer_label, text="00:00")
+    title.config(text="Timer")
+    check_marks.config(text="")
+    global reps
+    reps = 0
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def start_time():
@@ -44,9 +49,14 @@ def countdown(count):
     seconds = count % 60
     canvas.itemconfig(timer_label, text=f"{minutes:02d}:{seconds:02d}")
     if count > 0:
-        window.after(1000, countdown, count-1)
+        global timer
+        timer = window.after(1000, countdown, count-1)
     else:
         start_time()
+        marks = ""
+        for _ in range(math.floor(reps/2)):
+            marks += "🗸"
+        check_marks.config(text=marks)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -57,8 +67,8 @@ window.config(padx=100, pady=100, bg=YELLOW)
 title = Label(text="Timer", fg=GREEN, bg=YELLOW, font=(FONT_NAME, 45))
 title.grid(column=2, row=0, padx=0, pady=20)
 
-check_mark = Label(text="🗸", bg=YELLOW, fg=GREEN, font=(FONT_NAME, 40))
-check_mark.grid(column=2, row=4, padx=0, pady=20)
+check_marks = Label(bg=YELLOW, fg=GREEN, font=(FONT_NAME, 40))
+check_marks.grid(column=2, row=4, padx=0, pady=20)
 
 start = Button(text="Start", command=start_time)
 start.grid(column=0, row=3)
