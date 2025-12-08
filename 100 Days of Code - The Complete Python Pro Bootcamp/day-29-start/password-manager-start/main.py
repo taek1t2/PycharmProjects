@@ -10,11 +10,13 @@ def generate_password():
     char_options = []
     all_chars = letters, numbers, symbols
     char_list = char_options.append(random.choice(all_chars))
-    for each in range(all_chars):
+    temp_password = ""
+    for _ in range(all_chars):
+        if temp_password >= PASSWORD_LENGTH:
+            temp_password.join(char_list)
 
-
-    random.shuffle(char_options)
-    make_password = "".join(char_options)
+    random.shuffle(all_chars)
+    make_password = temp_password.join(char_options)
     return make_password
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
@@ -23,8 +25,12 @@ def save_password():
     password = password_input.get()
     user = user_input.get()
 
+
+
     with open("data.txt", "a") as df:
-        df.write(f"{website} | {user} | {password}")
+        df.write(f"{website} | {user} | {password}\n")
+        website_input.delete(0, END)
+        password_input.delete(0,END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -61,7 +67,7 @@ password_input = Entry(width=21)
 password_input.grid(column=1, row=4, sticky="w")
 
 #button generate password
-new_pass_button = Button(text="Generate Password", command=generate_password)
+new_pass_button = Button(text="Generate Password")
 new_pass_button.grid(column=2, row=4)
 
 #add button
