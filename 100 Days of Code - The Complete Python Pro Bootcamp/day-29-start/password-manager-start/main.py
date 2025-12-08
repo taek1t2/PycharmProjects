@@ -1,23 +1,21 @@
 from tkinter import *
+from tkinter import messagebox
 import random
 from char import letters, numbers, symbols
 FONT = ("Arial", 12)
 
-PASSWORD_LENGTH = 12
+PASSWORD_LENGTH = 16
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
-    char_options = []
-    all_chars = letters, numbers, symbols
-    char_list = char_options.append(random.choice(all_chars))
-    temp_password = ""
-    for _ in range(all_chars):
-        if temp_password >= PASSWORD_LENGTH:
-            temp_password.join(char_list)
+    temp_password_list = []
+    all_chars = letters + numbers + symbols
+    print(all_chars)
+    for _ in range(PASSWORD_LENGTH):
+        temp_password_list.append(all_chars)
+        random.shuffle(temp_password_list)
 
-    random.shuffle(all_chars)
-    make_password = temp_password.join(char_options)
-    return make_password
+    password_input.insert(0, make_password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
@@ -25,12 +23,17 @@ def save_password():
     password = password_input.get()
     user = user_input.get()
 
+    if len(website) == 0 or len(password) == 0:
+        messagebox.showinfo(title="Error", message="Please make sure you haven't left any fields empty")
+    else:
+        is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: Email: {user} \n "
+                                                              f"Password: {password} \n Is it ok to save?")
 
-
-    with open("data.txt", "a") as df:
-        df.write(f"{website} | {user} | {password}\n")
-        website_input.delete(0, END)
-        password_input.delete(0,END)
+    if is_ok:
+        with open("data.txt", "a") as df:
+            df.write(f"{website} | {user} | {password}\n")
+            website_input.delete(0, END)
+            password_input.delete(0,END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -67,7 +70,7 @@ password_input = Entry(width=21)
 password_input.grid(column=1, row=4, sticky="w")
 
 #button generate password
-new_pass_button = Button(text="Generate Password")
+new_pass_button = Button(text="Generate Password", command=generate_password)
 new_pass_button.grid(column=2, row=4)
 
 #add button

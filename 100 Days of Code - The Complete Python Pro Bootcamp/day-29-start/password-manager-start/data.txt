@@ -1,2 +1,0 @@
-amazon | taeyeon@email.com | email
-ebay | taeyeon@email.com | password
