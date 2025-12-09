@@ -4,20 +4,33 @@ import random
 from char import letters, numbers, symbols
 FONT = ("Arial", 12)
 
+#Option 1
 PASSWORD_LENGTH = 16
 
-# ---------------------------- PASSWORD GENERATOR ------------------------------- #
-def generate_password():
-    temp_password_list = []
-    all_chars = letters + numbers + symbols
-    print(all_chars)
-    for _ in range(PASSWORD_LENGTH):
-        random_letter = random.choice(all_chars)
-        temp_password_list.append(random_letter)
+#Option 2
+length_pw = random.randint(12, 16)
 
-    random.shuffle(temp_password_list)
-    make_password = "".join(temp_password_list)
-    password_input.insert(0, make_password)
+# ---------------------------- PASSWORD GENERATOR ------------------------------- #
+#Option 1 - Comment out, test other option
+# def generate_password():
+#     temp_password_list = []
+#     all_chars = letters + numbers + symbols
+#     for _ in range(PASSWORD_LENGTH):
+#         random_letter = random.choice(all_chars)
+#         temp_password_list.append(random_letter)
+#
+#     random.shuffle(temp_password_list)
+#     make_password = "".join(temp_password_list)
+#     password_input.insert(0, make_password)
+
+#Option 2: With list comprehensions - Comment out, test other option
+def generate_password():
+    all_chars_list = letters + numbers + symbols
+    temp_pw_list = [random.choice(all_chars_list) for _ in range(length_pw)]
+    random.shuffle(temp_pw_list)
+    final_password="".join(temp_pw_list)
+    password_input.insert(0, final_password)
+
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
@@ -26,7 +39,7 @@ def save_password():
     user = user_input.get()
 
     if len(website) == 0 or len(password) == 0:
-        messagebox.showinfo(title="Error", message="Please make sure you haven't left any fields empty")
+        messagebox.showinfo(title="Error", message="Please make sure you haven't left any fields empty.")
     else:
         is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: Email: {user} \n "
                                                               f"Password: {password} \n Is it ok to save?")
