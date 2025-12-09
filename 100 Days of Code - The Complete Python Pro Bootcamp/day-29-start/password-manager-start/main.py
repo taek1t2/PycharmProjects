@@ -12,9 +12,11 @@ def generate_password():
     all_chars = letters + numbers + symbols
     print(all_chars)
     for _ in range(PASSWORD_LENGTH):
-        temp_password_list.append(all_chars)
-        random.shuffle(temp_password_list)
+        random_letter = random.choice(all_chars)
+        temp_password_list.append(random_letter)
 
+    random.shuffle(temp_password_list)
+    make_password = "".join(temp_password_list)
     password_input.insert(0, make_password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
@@ -76,9 +78,6 @@ new_pass_button.grid(column=2, row=4)
 #add button
 add_button = Button(text="Add", width=36, command=save_password)
 add_button.grid(column=1, row=5, sticky="w",columnspan=2)
-
-
-
 
 
 
