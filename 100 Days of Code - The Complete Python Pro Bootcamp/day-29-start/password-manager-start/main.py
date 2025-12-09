@@ -11,7 +11,7 @@ PASSWORD_LENGTH = 16
 length_pw = random.randint(12, 16)
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
-#Option 1 - Comment out, test other option
+#OPTION 1 - Comment out, test other option
 # def generate_password():
 #     temp_password_list = []
 #     all_chars = letters + numbers + symbols
@@ -23,7 +23,7 @@ length_pw = random.randint(12, 16)
 #     make_password = "".join(temp_password_list)
 #     password_input.insert(0, make_password)
 
-#Option 2: With list comprehensions - Comment out, test other option
+#OPTION 2: With list comprehensions - Comment out, test other option
 def generate_password():
     all_chars_list = letters + numbers + symbols
     temp_pw_list = [random.choice(all_chars_list) for _ in range(length_pw)]
