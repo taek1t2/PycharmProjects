@@ -65,11 +65,10 @@ def find_password():
         if website in data:
             email = data[website]["email"]
             password = data[website]["password"]
-            for key, value in data.items():
-                if website == key:
-                    messagebox.showinfo(title="Password Found", message=f"Email: {email} \n Password: {password}")
-                else:
-                    messagebox.showinfo(title="Error", message="No details found")
+            messagebox.showinfo(title=website, message=f"Email: {email} \nPassword: {password}")
+
+        else:
+            messagebox.showinfo(title="Error", message="No details found")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
