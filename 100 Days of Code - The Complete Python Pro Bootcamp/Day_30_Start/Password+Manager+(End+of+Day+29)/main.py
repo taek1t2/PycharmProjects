@@ -58,15 +58,18 @@ def save():
 
 # ---------------------------- Find_Password ------------------------------- #
 def find_password():
-    website = website_entry.get().lower()
-    email = email_entry.get()
-    password = password_entry.get()
+    website = website_entry.get()
 
-    with open("data.json", "r") as data_file:
+    with open("data.json") as data_file:
         data = json.load(data_file)
-        for key, value in data.items():
-            if website == key:
-                messagebox.showinfo(title="Password Found", message=f"Email: {email} \n Password: {password}")
+        if website in data:
+            email = data[website]["email"]
+            password = data[website]["password"]
+            for key, value in data.items():
+                if website == key:
+                    messagebox.showinfo(title="Password Found", message=f"Email: {email} \n Password: {password}")
+                else:
+                    messagebox.showinfo(title="Error", message="No details found")
 
 # ---------------------------- UI SETUP ------------------------------- #
 

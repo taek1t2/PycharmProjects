@@ -10,5 +10,9 @@
     "Amazon": {
         "email": "example@email.com",
         "password": "bbOz$qiJ5$1I2%Th#3"
+    },
+    "facebook": {
+        "email": "example@email.com",
+        "password": "TX#*O1wII49z6(y"
     }
 }
