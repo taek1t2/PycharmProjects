@@ -17,7 +17,11 @@ right_button = Button(image=right, background=BACKGROUND_COLOR, highlightthickne
 right_button.grid(row=1, column=1, columnspan=1)
 
 wrong = PhotoImage(file="./images/wrong.png")
-wrong_button = Button(image=wrong, highlightthickness=0, background=BACKGROUND_COLOR)
+wrong_button = Button(image=wrong, background=BACKGROUND_COLOR, highlightthickness=0)
 wrong_button.grid(row=1, column=0, columnspan=1)
+
+
+card_font =
+
 
 box.mainloop()
