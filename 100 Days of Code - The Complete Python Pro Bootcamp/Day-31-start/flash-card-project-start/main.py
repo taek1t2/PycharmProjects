@@ -13,10 +13,13 @@ df = data.to_dict("records")
 current_card = {}
 
 def next_card():
-    global current_card
+    global current_card, flip_timer
+    box.after_cancel(flip_timer)
     current_card = random.choice(df)
-    box_canvas.itemconfig(card_title, text="French")
-    box_canvas.itemconfig(card_word, text=current_card["French"])
+    box_canvas.itemconfig(card_title, text="French", fill="black")
+    box_canvas.itemconfig(card_word, text=current_card["French"], fill="black")
+    box_canvas.itemconfig(card_image, image=ft_card)
+    flip_timer = box.after(3000, flip_card)
 
 def flip_card():
     box_canvas.itemconfig(card_title, text="English", fill="white")
@@ -26,8 +29,8 @@ def flip_card():
 box = Tk()
 box.title("Flashy")
 box.config(padx=50, pady=50, background=BACKGROUND_COLOR)
+flip_timer = box.after(3000, flip_card)
 
-box.after(3000, flip_card)
 
 box_canvas = Canvas(width=900, height=700, bg=BACKGROUND_COLOR, highlightthickness=0)
 ft_card = PhotoImage(file="./images/card_front.png")
