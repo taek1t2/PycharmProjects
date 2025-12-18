@@ -7,10 +7,20 @@ BACKGROUND_COLOR = "#B1DDC6"
 FONT= ("Arial", 35, "italic")
 WORD_FONT = ("Arial", 55, "bold")
 
-data = pandas.read_csv("./data/french_words.csv")
-df = data.to_dict("records")
+# data = pandas.read_csv("./data/words_to_relearn.csv")
+# df = data.to_dict("records")
 
 current_card = {}
+df = {}
+
+try:
+    data = pandas.read_csv("./data/words_to_relearn.csv")
+except FileNotFoundError:
+    original_data = pandas.read_csv("./data/french_words.csv")
+    df = original_data.to_dict(orient="records")
+else:
+    df = data.to_dict(orient="records")
+
 
 def next_card():
     global current_card, flip_timer
@@ -19,17 +29,25 @@ def next_card():
     box_canvas.itemconfig(card_title, text="French", fill="black")
     box_canvas.itemconfig(card_word, text=current_card["French"], fill="black")
     box_canvas.itemconfig(card_image, image=ft_card)
-    flip_timer = box.after(3000, flip_card)
+    flip_timer = box.after(5000, flip_card)
 
 def flip_card():
     box_canvas.itemconfig(card_title, text="English", fill="white")
     box_canvas.itemconfig(card_word, text=current_card["English"], fill="white")
     box_canvas.itemconfig(card_image, image=bk_card)
 
+def known_words():
+    df.remove(current_card)
+    to_learn = pandas.DataFrame(df)
+    to_learn.to_csv("data/words_to_learn.csv")
+    next_card()
+
+
+
 box = Tk()
 box.title("Flashy")
 box.config(padx=50, pady=50, background=BACKGROUND_COLOR)
-flip_timer = box.after(3000, flip_card)
+flip_timer = box.after(5000, flip_card)
 
 
 box_canvas = Canvas(width=900, height=700, bg=BACKGROUND_COLOR, highlightthickness=0)
@@ -42,7 +60,7 @@ card_word = box_canvas.create_text(450, 300, text="", font=WORD_FONT, fill="blac
 
 
 right = PhotoImage(file="./images/right.png")
-right_button = Button(image=right, background=BACKGROUND_COLOR, highlightthickness=0, command=next_card)
+right_button = Button(image=right, background=BACKGROUND_COLOR, highlightthickness=0, command=known_words)
 right_button.place(relx=0.5, rely=1.0, x=140, y=-20, anchor="s")
 
 wrong = PhotoImage(file="./images/wrong.png")
