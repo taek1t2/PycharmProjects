@@ -7,4 +7,15 @@ response = requests.get(url="http://api.open-notify.org/iss-now.json")
 #     raise Exception("Doesn't work")
 
 data = response.json()
-print(data)
+# print(data)
+
+longitude=data["iss_position"]["longitude"]
+latitude=data["iss_position"]["latitude"]
+
+iss_position = (longitude, latitude)
+print(iss_position)
+
+
+# 1XX: hold on, 2xx: here you go, 3xx: Go Away, 4xx: thing you're looking for doesn't exist, 5xx: means the server down
+
+
