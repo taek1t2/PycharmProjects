@@ -15,4 +15,3 @@ print(nato_dict)
 word_enter = input("Enter a word: ").lower()
 the_word = [nato_dict[each_letter.upper()] for each_letter in word_enter]
 print(the_word)
-
